@@ -10,11 +10,8 @@ using namespace std;
 class Animals
 {
 protected:
-    string s;
+    string s = "sound of silence";
 public:
-    Animals() {}
-    Animals(string _s) : s(_s)
-    {}
     void Voice()
     {
         cout << s << "\n";
@@ -24,46 +21,44 @@ public:
 class Dog : public Animals
 {
 public:
-    Dog() :Animals("Woof!")
-    {}
+    Dog() :Animals()
+    {
+        s = "Woof!";
+    }
 };
 
 class Cat : public Animals
 {
 public:
-    Cat() :Animals("Meow")
-    {}
+    Cat() :Animals()
+    {
+        s = "Meow";
+    }
 };
 
 class Duck : public Animals
 {
 public:
-    Duck() :Animals("Quack-Quack")
-    {}
+    Duck() :Animals()
+    {
+        s = "Quack-Quack";
+    }
 };
 
-void b()
-{
 
-}
+
 int main()
 {
-    vector<std::function<void()>> animalsVoises;
+    //vector<function<void()>> *animalsVoises;
+    Animals* reff[3];
+    reff[0] = new Dog;
+    reff[1] = new Cat;
+    reff[2] = new Duck;
 
-    //Animals* Animals1 = new Animals("rustling grass");
-    //animalsVoises.push_back(Animals1->Voice());
-
-    Animals* Animals1 = new Animals("*rustling grass*");
-    Animals1->Voice();
-
-    Dog* Dog1 = new Dog();
-    Dog1->Voice();
-
-    Cat* Cat1 = new Cat();
-    Cat1->Voice();
-
-    Duck* Duck1 = new Duck();
-    Duck1->Voice();
+    for (int i = 0; i < 3; i++)
+    {
+        reff[i]->Voice();
+    }
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
